@@ -21,6 +21,7 @@ export default {
       backgroundImage: {
         'gradient-primary': 'linear-gradient(90deg, rgba(4,20,37,1) 45%, rgba(14,22,27,1) 60%)',
         blackOverlay: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%)",
+        'black-overlay': 'linear-gradient(rgba(0,0,0,0) 0%, #000 85%)'
       },
       screens: {
         xl: { max: "1279px" },
