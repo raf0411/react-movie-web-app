@@ -6,14 +6,14 @@ import { category, movieType, tvType } from "../../api/tmdb";
 
 function HomePage() {
   return (
-    <main className="bg-gradient-primary h-screen text-yellow flex flex-col">
+    <main>
       <HeroSlide />
 
       <div className="bg-black w-[100%] flex flex-col gap-20 pb-16">
         <div className="flex flex-col mx-32 gap-10">
           <div className="flex items-center justify-between">
             <label className="text-3xl font-semibold uppercase">Movies</label>
-            <ViewMoreButton />
+            <ViewMoreButton category='movies' />
           </div>
           <MovieList category={category.movie} type={movieType.popular} />
         </div>
@@ -21,7 +21,7 @@ function HomePage() {
         <div className="flex flex-col mx-32 gap-10">
           <div className="flex items-center justify-between">
             <label className="text-3xl font-semibold uppercase">Series</label>
-            <ViewMoreButton />
+            <ViewMoreButton category='series'/>
           </div>
           <MovieList category={category.tv} type={tvType.popular} />
         </div>
@@ -29,7 +29,7 @@ function HomePage() {
         <div className="flex flex-col mx-32 gap-10">
           <div className="flex items-center justify-between">
             <label className="text-3xl font-semibold uppercase">Top Rated Movies</label>
-            <ViewMoreButton />
+            <ViewMoreButton category='movies'/>
           </div>
           <MovieList category={category.movie} type={movieType.top_rated} />
         </div>
@@ -37,7 +37,7 @@ function HomePage() {
         <div className="flex flex-col mx-32 gap-10">
           <div className="flex items-center justify-between">
             <label className="text-3xl font-semibold uppercase">Top Rated Series</label>
-            <ViewMoreButton />
+            <ViewMoreButton category='series'/>
           </div>
           <MovieList category={category.tv} type={tvType.top_rated} />
         </div>
@@ -45,7 +45,7 @@ function HomePage() {
         <div className="flex flex-col mx-32 gap-10">
           <div className="flex items-center justify-between">
             <label className="text-3xl font-semibold uppercase">On Air Series</label>
-            <ViewMoreButton />
+            <ViewMoreButton category='series'/>
           </div>
           <MovieList category={category.tv} type={tvType.on_the_air} />
         </div>
@@ -53,7 +53,7 @@ function HomePage() {
         <div className="flex flex-col mx-32 gap-10">
           <div className="flex items-center justify-between">
             <label className="text-3xl font-semibold uppercase">Upcoming Movies</label>
-            <ViewMoreButton />
+            <ViewMoreButton category='movies'/>
           </div>
           <MovieList category={category.movie} type={movieType.upcoming} />
         </div>

@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import tmdbApi, { category } from "../../api/tmdb";
 import MovieCard from "./MovieCard";
 import api from "../../api/api";
+import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 
 function MovieList(props) {
   const [items, setItems] = useState([]);
@@ -33,13 +34,13 @@ function MovieList(props) {
     getList();
   }, []);
 
-  // console.log(items);
-
   return (
     <div>
       <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
         grabCursor={true}
         spaceBetween={30}
+        navigation={true}
         slidesPerView={'auto'}>
         {items.map((item, i) => (
           <SwiperSlide className="w-[15%] md:w-[30%]" key={i}>

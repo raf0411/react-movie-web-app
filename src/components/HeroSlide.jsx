@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import tmdb, { category, movieType } from "../../api/tmdb";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useNavigate } from "react-router-dom";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
 import Button, {
   WatchlistButton,
   SlideLeftButton,
@@ -34,8 +33,9 @@ function HeroSlide() {
   return (
     <div>
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={0}
+        autoplay={{delay: 5000}}
       >
         {movieItems.map((item, i) => (
           <SwiperSlide key={i}>
@@ -55,7 +55,6 @@ function HeroSlide() {
 }
 
 const HeroSlideItem = (props) => {
-  let navigate = useNavigate();
   const item = props.item;
   const background = api.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path

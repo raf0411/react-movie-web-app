@@ -15,9 +15,10 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/series" element={<SeriesPage />} />
-        <Route path="/movie:id" element={<DetailPage />} />
+        <Route path="/:category/search/:keyword" element={<MoviesPage />} />
+        <Route path="/:category/search/:keyword" element={<SeriesPage />} />
+        <Route path="/:category" element={<MoviesPage />} />
+        <Route path="/:category/:id" element={<DetailPage />} />
       </Route>
     )
   );
