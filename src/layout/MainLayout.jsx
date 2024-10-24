@@ -6,7 +6,7 @@ import AutoScroll from '../components/AutoScroll';
 
 function MainLayout() {
   return (
-    <div className='flex flex-col bg-gradient-primary h-screen text-yellow'>
+    <div className='scroll-smooth flex flex-col bg-gradient-primary h-screen text-yellow'>
       <AutoScroll />
       <NavBar />
       <Outlet />

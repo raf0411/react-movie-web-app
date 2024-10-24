@@ -832,6 +832,10 @@ video {
   gap: 1.75rem;
 }
 
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
 .rounded-2xl {
   border-radius: 1rem;
 }
@@ -911,6 +915,10 @@ video {
 .bg-blue-950 {
   --tw-bg-opacity: 1;
   background-color: rgb(0 31 63 / var(--tw-bg-opacity));
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .bg-black-overlay {

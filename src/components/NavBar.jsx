@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 
 function NavBar() {
+  const [nav, setNav] = useState(false);
   const activeLink = "border-b-2 border-blue-700 font-bold";
+  const activeBar = "bg-black/50";
   const inactiveLink = "";
+
+  const transformNav = () => {
+    if (window.scrollY >= 100) {
+      setNav(true);
+    } else {
+      setNav(false);
+    }
+  };
+
+  window.addEventListener('scroll', transformNav)
 
   return (
     <header>
-      <nav className="duration-300 fixed w-full h-20 flex justify-between items-center px-44 pl-10 text-yellow md:pr-10 md:pl-2 z-[99] top-0 left-0">
+      <nav className={`duration-300 transition-all fixed w-full h-20 flex justify-between items-center px-44 pl-10 text-yellow md:pr-10 md:pl-2 z-[99] top-0 left-0 ${nav ? activeBar : ''}`}>
         <div className="flex items-center justify-center align-middle gap-5">
           <Link
             to={"/"}

@@ -44,7 +44,7 @@ function DetailPage() {
     const videos = await tmdbApi.getVideos(category, id);
 
     if (videos.results.length > 0) {
-      const src = `https://www.youtube.com/embed/${videos.results[0].key}`;
+      const src = `https://www.youtube.com/embed/${videos.results[1].key}`;
       trailer.setAttribute("src", src);
     } else {
       modal.removeChild(modal.lastElementChild);
@@ -143,6 +143,7 @@ function DetailPage() {
                     <WatchlistButton />
                     <Modal open={open} onClose={() => setOpen(false)}>
                       <iframe
+                        allowFullScreen
                         id="trailer"
                         className="rounded-xl"
                         width="100%"
