@@ -64,7 +64,7 @@ const HeroSlideItem = (props) => {
 
   return (
     <div
-      className={`py-9 h-screen bg-repeat bg-cover bg-center ${props.className} flex content-center items-center`}
+      className={`py-9 h-screen bg-repeat bg-cover bg-center flex content-center items-center`}
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className="flex items-center w-screen h-screen bg-black-overlay">
@@ -77,12 +77,12 @@ const HeroSlideItem = (props) => {
           <div className="flex items-center gap-5 text-xl">
             <div className="flex items-center gap-2">
               <FaStar />
-              <p>{item.vote_average.toFixed(2)}</p>
+              <p>{item.vote_average.toFixed(1)}</p>
             </div>
             <FaCircle size={8} />
             <p className="font-bold">{movieDate.getFullYear()}</p>
           </div>
-          <p className="max-w-[50%] font-serif font-extralight text-lg">{item.overview}</p>
+          <p className="max-w-[70%] font-serif font-extralight text-lg">{item.overview}</p>
           <div className="flex items-center gap-10">
             <Button text="View" id={item.id} />
             <WatchlistButton />

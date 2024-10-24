@@ -8,7 +8,9 @@ import { FaPlayCircle } from "react-icons/fa";
 function MovieCard(props) {
   const item = props.item;
   const link = "/" + category[props.category] + "/" + item.id;
-  const background = api.w500image(item.poster_path || item.backdrop_path);
+  const background = api.w500image(item.poster_path || item.backdrop_path)
+    ? api.w500image(item.poster_path || item.backdrop_path)
+    : "https://critics.io/img/movies/poster-placeholder.png";
 
   return (
     <Link to={link} className="duration-300 hover:text-blue-500">
@@ -17,7 +19,7 @@ function MovieCard(props) {
         style={{ backgroundImage: `url(${background})` }}
       >
         <button className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[50%] scale-0 duration-300 hover:scale-100">
-          <FaPlayCircle size={64}/>
+          <FaPlayCircle size={64} />
         </button>
       </div>
       <h3 className="font-semibold">{item.title || item.name}</h3>

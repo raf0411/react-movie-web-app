@@ -15,14 +15,12 @@ function CastList(props) {
     getCredits();
   }, [category, props.id]);
 
-  console.log(casts.profile_path);
-
   return (
     <div className='grid grid-cols-5 gap-5'>
       {
         casts.map((item, i) => (
           <div key={i}>
-            <div className='pt-[160px] bg-cover mb-[.5rem] rounded-xl ' style={{ backgroundImage: `url(${api.w500image(item.profile_path)})` }}></div>
+            <div className='pt-[160px] w-[150px] h-[100px] bg-cover bg-top bg-no-repeat mb-[.5rem] rounded-xl ' style={{ backgroundImage: `url(${api.w500image(item.profile_path)})` }}></div>
             <p>{item.name}</p>
           </div>
         ))

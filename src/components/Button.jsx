@@ -20,10 +20,10 @@ const Button = (props) => {
   );
 };
 
-export const WatchTrailerButton = (props) => {
+export const WatchTrailerButton = ({onClick}) => {
   return (
     <button
-      className="bg-blue-950 rounded-lg px-5 text-xl py-3 font-bold font-sans uppercase text-white duration-200 hover:opacity-70"
+      className="bg-blue-950 rounded-lg px-5 text-xl py-3 font-bold font-sans uppercase text-white duration-200 hover:opacity-70" onClick={() => onClick()}
     >
       Watch Trailer
     </button>

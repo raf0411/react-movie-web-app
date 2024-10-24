@@ -8,7 +8,7 @@ function NavBar() {
 
   return (
     <header>
-      <nav className="duration-300 fixed w-full h-20 flex justify-between items-center px-44 pl-10 text-yellow md:pr-10 md:pl-2 z-50">
+      <nav className="duration-300 fixed w-full h-20 flex justify-between items-center px-44 pl-10 text-yellow md:pr-10 md:pl-2 z-[99] top-0 left-0">
         <div className="flex items-center justify-center align-middle gap-5">
           <Link
             to={"/"}

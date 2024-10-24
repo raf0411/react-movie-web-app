@@ -18,8 +18,8 @@ function Footer() {
   }
 
   return (
-    <footer className={`text-yellow ${background} relative py-10`}>
-      <div className="w-[85%] flex items-center justify-between m-auto">
+    <footer className={`text-yellow ${background} py-10 relative`}>
+      <div className="flex items-center justify-between m-auto px-32">
         <div>
           <span className="font-extralight">&copy; 2024</span>{" "}
           <Link

@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom';
 
 function MoviesPage() {
   const { category } = useParams();
+  const headerTitle = category === "movie" ? "Movies" : "Series";
 
   return (
     <main>
       <div className='flex flex-col justify-center items-start bg-gradient-primary min-h-screen text-yellow px-14 w-full mt-28 gap-10 pb-16'>
-        <h1 className='font-bold text-3xl uppercase'>Movies</h1>
+        <h1 className='font-bold text-3xl uppercase'>{headerTitle}</h1>
 
         <div>
           <div>
