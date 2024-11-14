@@ -74,7 +74,7 @@ function MovieGrid(props) {
         <MovieSearch category={props.category} keyword={keyword} items={items} />
       </div>
 
-      <div className="grid grid-cols-5 md:grid-cols-3 sm:grid-cols-1 gap-10">
+      <div className="grid grid-cols-5 md:grid-cols-2 sm:grid-cols-1 text-center gap-10">
         {items.map((item, i) => (
           <MovieCard category={props.category} item={item} key={i} />
         ))}

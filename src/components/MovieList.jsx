@@ -43,7 +43,7 @@ function MovieList(props) {
         navigation={true}
         slidesPerView={'auto'}>
         {items.map((item, i) => (
-          <SwiperSlide className="w-[15%] md:w-[30%]" key={i}>
+          <SwiperSlide className="w-[15%] md:w-[100%]" key={i}>
             <MovieCard item={item} category={props.category} ></MovieCard>
           </SwiperSlide>
         ))}

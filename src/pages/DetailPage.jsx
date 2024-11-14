@@ -4,8 +4,8 @@ import tmdbApi from "../../api/tmdb";
 import api from "../../api/api";
 import { FaCircle, FaStar, FaUsers } from "react-icons/fa";
 import { WatchlistButton, WatchTrailerButton } from "../components/Button";
-import CastList from "../components/CastList";
 import Modal from "../components/Modal";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 function DetailPage() {
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ function DetailPage() {
     const videos = await tmdbApi.getVideos(category, id);
 
     if (videos.results.length > 0) {
-      const src = `https://www.youtube.com/embed/${videos.results[1].key}`;
+      const src = `https://www.youtube.com/embed/${videos.results[0].key}`;
       trailer.setAttribute("src", src);
     } else {
       modal.removeChild(modal.lastElementChild);
@@ -55,7 +55,7 @@ function DetailPage() {
   return (
     <main>
       {item && director && casts && (
-        <div className="w-[100%] h-screen">
+        <div className="w-[100%] h-screen mb-[500px]">
           <div
             className="relative bg-center bg-no-repeat bg-cover flex flex-col justify-center items-start"
             style={{
@@ -65,17 +65,17 @@ function DetailPage() {
             }}
           >
             <div className="flex flex-col w-full h-screen bg-black-overlay">
-              <div className="flex items-center justify-evenly ml-32 mr-44 mt-32">
-                <div className="flex flex-col gap-5">
-                  <h2 className="text-6xl uppercase font-sans font-bold max-w-[1000px]">
+              <div className="flex items-center justify-evenly ml-32 mr-44 mt-32 md:flex-col-reverse md:gap-5 md:justify-center md:content-center md:mx-0 ">
+                <div className="flex md:items-center md:justify-start flex-col gap-5">
+                  <h2 className="text-6xl uppercase font-sans font-bold max-w-[1000px] md:text-3xl md:text-center">
                     {item.title || item.name}
                   </h2>
-                  <div className="flex items-center gap-5 text-xl">
-                    <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-5 text-xl flex-wrap md:justify-center sm:mx-12">
+                    <div className={`grid gap-3 ${item.genres.length >= 3 ? 'grid-cols-3' : `grid-cols-${item.genres.length}`}`}>
                       {item.genres.slice(0, 3).map((g, i) => (
                         <label
                           key={i}
-                          className="font-semibold text-sm bg-blue-950 px-3 py-1 rounded-2xl text-white"
+                          className="font-semibold text-sm bg-blue-950 px-3 py-1 rounded-2xl text-white text-center flex items-center justify-center content-center"
                         >
                           {g.name}
                         </label>
@@ -87,53 +87,59 @@ function DetailPage() {
                         new Date(item.first_air_date).getFullYear()}
                     </p>
                   </div>
-                  <p className="max-w-[70%] font-serif font-extralight text-lg">
+                  <p className="max-w-[70%] font-serif font-extralight text-lg md:text-center">
                     {item.overview}
                   </p>
-                  <div className="flex items-center gap-5">
-                    {category === "movie" ? (
-                      <span className="font-bold text-white uppercase bg-blue-950 px-4 py-1 text-lg rounded-xl">
-                        Director
-                      </span>
-                    ) : (
-                      ""
-                    )}
-
-                    <span className="font-extralight text-lg">
-                      {category === "movie"
-                        ? director[0]
-                          ? director[0].name
-                          : ""
-                        : ""}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-5">
-                    <span className="font-bold text-white uppercase bg-blue-950 px-4 py-1 text-lg rounded-xl">
-                      Casts
-                    </span>
-                    <div className="flex flex-wrap max-w-[500px]">
-                      {casts.map((cast, i) => (
-                        <span key={i} className="font-extralight text-lg">
-                          {cast.name}, &nbsp;
+                  <div className="flex flex-col gap-5 md:items-center md:content-center md:justify-center">
+                    
+                    <div className="flex items-center gap-5 md:flex-col">
+                      {category === "movie" ? (
+                        <span className="font-bold text-white uppercase bg-blue-950 px-4 py-1 text-lg rounded-xl">
+                          Director
                         </span>
-                      ))}
+                      ) : (
+                        ""
+                      )}
+
+                      <span className="font-extralight text-lg">
+                        {category === "movie"
+                          ? director[0]
+                            ? director[0].name
+                            : ""
+                          : ""}
+                      </span>
+                    </div>
+                    
+                    <div className="flex items-center gap-5 md:flex-col">
+                      <span className="font-bold text-white uppercase bg-blue-950 px-4 py-1 text-lg rounded-xl">
+                        Casts
+                      </span>
+                      <div className="flex items-center justify-center content-center mx-5">
+                        {casts.map((cast, i) => (
+                          <span key={i} className="font-extralight text-lg text-center">
+                            {cast.name}, &nbsp;
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-5">
+
+                  <div className="flex items-center gap-5 mt-5">
                     <div className="flex items-center gap-3">
                       <FaStar size={24} />
                       <span className="text-xl font-semibold">
                         {item.vote_average.toFixed(1)}
                       </span>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex gap-3">
                       <FaUsers size={24} />
                       <span className="text-xl font-semibold">
                         {item.popularity.toFixed(0)}
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-10">
+                  
+                  <div className="flex md:justify-center md:content-center h-full items-center gap-10 w-[100%] mt-12">
                     <WatchTrailerButton
                       onClick={() => {
                         setModalActive();
@@ -154,7 +160,7 @@ function DetailPage() {
                   </div>
                 </div>
                 <img
-                  className="drop-shadow-lg rounded-xl max-w-[500px] w-[300px]"
+                  className="drop-shadow-lg rounded-xl max-w-[500px] w-[300px] md:w-[200px]"
                   src={api.originalImage(
                     item ? item.poster_path : item.backdrop_path
                   )}
@@ -165,6 +171,7 @@ function DetailPage() {
           </div>
         </div>
       )}
+      <ScrollToTopButton />
     </main>
   );
 }

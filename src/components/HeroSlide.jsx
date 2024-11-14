@@ -22,7 +22,7 @@ function HeroSlide() {
         const response = await tmdb.getMoviesList(movieType.popular, {
           params,
         });
-        setMovieItems(response.results.slice(0, 9));
+        setMovieItems(response.results.slice(0, 12));
       } catch (error) {
         console.log(error);
       }
@@ -61,6 +61,8 @@ const HeroSlideItem = (props) => {
   );
 
   const movieDate = new Date(item.release_date);
+  const isMovieTitleLong = item.title.length > 30;
+  const isOverviewLong = item.overview.length > 100;
 
   return (
     <div
@@ -70,8 +72,8 @@ const HeroSlideItem = (props) => {
       <div className="flex items-center w-screen h-screen bg-black-overlay">
         {props.index > 0 ? <SlideLeftButton /> : ""}
 
-        <div className="flex flex-col gap-7 ml-32">
-          <h2 className="text-7xl uppercase font-sans font-bold">
+        <div className="flex flex-col gap-7 ml-32 md:ml-24">
+          <h2 className={isMovieTitleLong ? `text-5xl uppercase font-sans font-bold md:text-3xl md:w-[50%]` : `text-7xl uppercase font-sans font-bold md:text-3xl md:w-[50%]`}>
             {item.title}
           </h2>
           <div className="flex items-center gap-5 text-xl">
@@ -82,8 +84,10 @@ const HeroSlideItem = (props) => {
             <FaCircle size={8} />
             <p className="font-bold">{movieDate.getFullYear()}</p>
           </div>
-          <p className="max-w-[70%] font-serif font-extralight text-lg">{item.overview}</p>
-          <div className="flex items-center gap-10">
+          <p className="max-w-[70%] font-serif font-extralight text-lg">
+            {isOverviewLong ? item.overview.slice(0, 50) + "..." : item.overview}
+          </p>
+          <div className="flex items-center gap-10 md:flex-col-reverse md:items-start">
             <Button text="View" id={item.id} />
             <WatchlistButton />
           </div>

@@ -16,13 +16,16 @@ const Modal = ({ open, onClose, children }) => {
           open ? "scale-100 opacity-100" : "scale-125 opacity-0"
         }`}
       >
+        
         <button
           className="duration-300 absolute top-2 right-2 p-1 rounded-lg text-red-500 hover:text-red-500/50"
           onClick={onClose}
         >
           <IoMdClose size={32}/>
         </button>
-        <h1 id="no-trailer" className="text-3xl font-bold text-center text-white"></h1>
+
+        <h1 id="no-trailer" className="text-3xl font-bold text-center text-white">
+        </h1>
         {children}
       </div>
     </div>

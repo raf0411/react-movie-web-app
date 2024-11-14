@@ -1,6 +1,7 @@
 import React from 'react'
 import MovieGrid from '../components/MovieGrid';
 import { useParams } from 'react-router-dom';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 function MoviesPage() {
   const { category } = useParams();
@@ -17,6 +18,7 @@ function MoviesPage() {
           </div>
         </div>
       </div>
+      <ScrollToTopButton />
     </main>
   )
 }

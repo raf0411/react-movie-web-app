@@ -1,5 +1,6 @@
 import React from 'react'
 import MovieGrid from '../components/MovieGrid';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 function SeriesPage() {
   const category = 'tv';
@@ -15,6 +16,8 @@ function SeriesPage() {
           </div>
         </div>
       </div>
+
+      <ScrollToTopButton />
     </main>
   )
 }
